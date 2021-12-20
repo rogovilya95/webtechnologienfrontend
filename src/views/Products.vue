@@ -1,6 +1,6 @@
 <template>
   <div class="row row-cols-1 row-cols-md-4 g-4">
-    <div class="col" v-for="product in products" :key="product.id">
+    <div class="col" v-for="product in products" :key="product.productId">
           <div class="col">
             <div class="card h-100px">
               <img :src="getProductImg(product)" class="card-img-top" :alt="product.productName">
@@ -61,63 +61,41 @@ export default {
   name: 'Products',
   data () {
     return {
-      products: [
-        {
-          id: 1,
-          productName: 'Amazon Alexa',
-          productDescription: 'Connect all your smart devices',
-          productPrice: '20 ₸',
-          categoryId: [
-            '',
-            2
-          ]
-        },
-        {
-          id: 2,
-          productName: 'Smart Heating',
-          productDescription: 'Manage the temperature in your home',
-          productPrice: '30 ₸',
-          categoryId: []
-        },
-        {
-          id: 3,
-          productName: 'Smart Camera',
-          productDescription: 'Watch all',
-          productPrice: '40 ₸',
-          categoryId: [
-            1,
-            2
-          ]
-        },
-        {
-          id: 4,
-          productName: 'Smart Light',
-          productDescription: 'Adjust the light as you need it.',
-          productPrice: '50 ₸',
-          categoryId: [
-            1,
-            2
-          ]
-        }
-      ]
+      products: []
     }
   },
   methods: {
     getProductImg (product) {
-      if (product.id === 1) {
+      if (product.productId === 6) {
         return require('../assets/alexa.jpg')
-      } else if (product.id === 2) {
+      } else if (product.productId === 7) {
         return require('../assets/heating.jpg')
-      } else if (product.id === 3) {
+      } else if (product.productId === 8) {
         return require('../assets/camera.jpg')
-      } else if (product.id === 4) {
+      } else if (product.productId === 9) {
         return require('../assets/lamp.jpg')
       } else {
         return require('../assets/logo.png')
       }
     }
+  },
+  mounted () {
+    console.log('Load successful')
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/products'
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    }
+
+    fetch(endpoint, requestOptions)
+      .then(response => response.json())
+      .then(result => result.forEach(product => {
+        this.products.push(product)
+      }))
+      .catch(error => console.log('error', error))
   }
 }
+
 </script>
 
 <style scoped>
