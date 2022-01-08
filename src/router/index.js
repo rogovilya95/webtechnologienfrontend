@@ -4,6 +4,8 @@ import About from '../views/About.vue'
 import Products from '../views/Products.vue'
 import PaymentAndDelivery from '../views/PaymentsAndDelivery.vue'
 import MyAccount from '../views/MyAccount.vue'
+import AddCategory from '@/views/Category/AddCategory'
+import Category from '@/views/Category/Category'
 
 const routes = [
   {
@@ -30,6 +32,16 @@ const routes = [
     path: '/MyAccount',
     name: 'My account',
     component: MyAccount
+  },
+  {
+    path: '/admin/category/add',
+    name: 'AddCategory',
+    component: AddCategory
+  },
+  {
+    path: '/admin/category',
+    name: 'Category',
+    component: Category
   }
 ]
 

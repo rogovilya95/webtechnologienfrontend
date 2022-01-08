@@ -12,6 +12,7 @@
           <router-link class="nav-link" to="/about">About us</router-link>
           <router-link class="nav-link" to="/paymentsanddelivery">Payments and delivery</router-link>
           <router-link class="nav-link" to="/myaccount">My account</router-link>
+          <router-link class="nav-link" to="/admin/category/add">Add category</router-link>
 <!--          <a class="nav-link active" aria-current="page" href="#">Home</a>-->
 <!--          <a class="nav-link" href="#">Products</a>-->
 <!--          <a class="nav-link" href="#">About us</a>-->
