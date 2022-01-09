@@ -23,13 +23,18 @@
     </div>
   </nav>
 </template>
-
 <script>
 export default {
   name: 'Navbar'
 }
 </script>
-
 <style scoped>
-
+#logo {
+  width: 150px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+a {
+  color: white;
+}
 </style>
