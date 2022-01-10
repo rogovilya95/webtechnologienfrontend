@@ -45,8 +45,9 @@ export default {
   props: ['baseURL', 'categories'],
   methods: {
     async editCategory () {
+      delete this.category.products
       console.log('category', this.category)
-      await axios.put(`${this.baseURL}/api/categories/${this.id}`)
+      await axios.post(`${this.baseURL}/api/categories/${this.id}`, this.category)
         .then(() => {
           this.$emit('fetchData')
           this.$router.push({ name: 'Category' })

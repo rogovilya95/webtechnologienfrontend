@@ -31,4 +31,10 @@ export default {
 .card-img-top {
   object-fit: cover;
 }
+a {
+  text-decoration: none;
+}
+.card-title {
+  color: #484848;
+}
 </style>

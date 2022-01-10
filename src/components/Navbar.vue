@@ -47,14 +47,51 @@
           </div>
         </div>
       </form>
-      <router-link :to="{ name: 'Admin' }"> Admin </router-link>
       <!-- dropdown for browse -->
+      <!-- dropdown for account -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarAccount"
+            data-toggle="dropdown"
+          >
+            Accounts
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarAccount">
+            <router-link v-if="!token" class="dropdown-item" :to="{ name: 'Signup' }"
+            >Sign up
+            </router-link>
+            <router-link v-if="!token" class="dropdown-item" :to="{ name: 'Signin' }"
+            >Sign in
+            </router-link>
+            <a class="dropdown-item" v-if="token" href="#" @click="signout"
+            >Sign out
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
 </template>
 <script>
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+  data () {
+    return {
+      token: null
+    }
+  },
+  methods: {
+    signout () {
+      localStorage.removeItem('token')
+      this.token = null
+    }
+  },
+  mounted () {
+    this.token = localStorage.getItem('token')
+  }
 }
 </script>
 <style scoped>

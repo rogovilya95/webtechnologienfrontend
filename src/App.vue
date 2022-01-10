@@ -1,6 +1,7 @@
 <template>
-  <Navbar />
+  <Navbar :cartCount="cartCount" @resetCartCount="resetCartCount" />
   <router-view v-if="categories && products"
+               style="min-height: 60vh"
                :baseURL="baseURL"
                :categories="categories"
                :products="products"
@@ -20,7 +21,8 @@ export default {
     return {
       baseURL: 'https://smarthomewebtech.herokuapp.com',
       products: null,
-      categories: null
+      categories: null,
+      cartCount: 0
     }
   },
   methods: {
@@ -38,9 +40,22 @@ export default {
         .then((res) => {
           this.products = res.data
         }).catch((err) => console.log('err', err))
+      if (this.token) {
+        axios
+          .get(`${this.baseURL}/cart/?token=${this.token}`)
+          .then((res) => {
+            const result = res.data
+            this.cartCount = result.cartItems.length
+          })
+          .catch((err) => console.log('err', err))
+      }
+    },
+    resetCartCount () {
+      this.cartCount = 0
     }
   },
   mounted () {
+    this.token = localStorage.getItem('token')
     this.fetchData()
   }
 }

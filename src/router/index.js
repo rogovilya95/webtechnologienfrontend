@@ -10,6 +10,8 @@ import Category from '@/views/Category/Category'
 import Product from '@/views/Product/Product'
 import ShowDetails from '@/views/Product/ShowDetails'
 import ListProducts from '@/views/Category/ListProducts'
+import SignUp from '@/views/SignUp'
+import SignIn from '@/views/SignIn'
 
 const routes = [
   {
@@ -66,6 +68,16 @@ const routes = [
     path: '/product/details/:id',
     name: 'ShowDetails',
     component: ShowDetails
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: SignUp
+  },
+  {
+    path: '/signin',
+    name: 'Signin',
+    component: SignIn
   }
 ]
 
