@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h3 class="pt-3">Add Category</h3>
+        <h4 class="pt-3">Add Category</h4>
       </div>
     </div>
     <div class="row">
@@ -36,21 +36,21 @@ const sweetalert = require('sweetalert')
 export default {
   data () {
     return {
-      categoryName: '',
-      description: '',
-      imageUrl: ''
+      categoryName: null,
+      description: null,
+      imageURL: null
     }
   },
   methods: {
-    addCategory () {
+    async addCategory () {
       console.log(this.categoryName, this.description)
       const newCategory = {
         categoryName: this.categoryName,
         description: this.description,
-        imageUrl: this.imageUrl
+        imageUrl: this.imageURL
       }
-      const baseURL = 'https://smarthomewebtech.herokuapp.com/'
-      axios({
+      const baseURL = 'https://smarthomewebtech.herokuapp.com'
+      await axios({
         method: 'post',
         url: `${baseURL}/api/categories`,
         data: JSON.stringify(newCategory),

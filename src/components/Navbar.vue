@@ -3,7 +3,7 @@
     <!-- Navbar content -->
     <!--    Logo-->
     <router-link class="navbar-brand" :to="{ name: 'Home' }">
-      <img id="logo" src="../assets/icon.png" />
+      SmartHome
     </router-link>
     <!--    Burger Button-->
     <button
@@ -48,6 +48,7 @@
         </div>
       </form>
       <router-link :to="{ name: 'Admin' }"> Admin </router-link>
+      <!-- dropdown for browse -->
     </div>
   </nav>
 </template>
@@ -57,12 +58,11 @@ export default {
 }
 </script>
 <style scoped>
-#logo {
-  width: 150px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-a {
-  color: white;
+
+#search-button-navbar {
+  background-color: #febd69;
+  border-color: #febd69;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 </style>

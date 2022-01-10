@@ -1,11 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import AddCategory from '../views/Category/AddCategory'
-import Category from '../views/Category/Category'
 import About from '../views/About'
 import Admin from '@/views/Admin'
 import AddProduct from '@/views/Product/AddProduct'
-import Products from '@/views/Product/Products'
+import EditCategory from '@/views/Category/EditCategory'
+import EditProduct from '@/views/Product/EditProduct'
+import Category from '@/views/Category/Category'
+import Product from '@/views/Product/Product'
+import ShowDetails from '@/views/Product/ShowDetails'
+import ListProducts from '@/views/Category/ListProducts'
 
 const routes = [
   {
@@ -29,6 +33,16 @@ const routes = [
     component: Category
   },
   {
+    path: '/admin/category/:id',
+    name: 'EditCategory',
+    component: EditCategory
+  },
+  {
+    path: '/category/details/:id',
+    name: 'ListProducts',
+    component: ListProducts
+  },
+  {
     path: '/admin',
     name: 'Admin',
     component: Admin
@@ -36,12 +50,22 @@ const routes = [
   {
     path: '/admin/product',
     name: 'AdminProduct',
-    component: Products
+    component: Product
   },
   {
-    path: '/admin/product/new',
+    path: '/admin/product/add',
     name: 'AddProduct',
     component: AddProduct
+  },
+  {
+    path: '/admin/product/:id',
+    name: 'EditProduct',
+    component: EditProduct
+  },
+  {
+    path: '/product/details/:id',
+    name: 'ShowDetails',
+    component: ShowDetails
   }
 ]
 

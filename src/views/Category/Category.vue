@@ -12,35 +12,27 @@
       <div
         v-for="category of categories"
         :key="category.id"
-        class="col-xl-4 col-md-6 col-12 pt-3 d-flex"
-      >
-        <CategoryCard :category="category"> </CategoryCard>
+        class="col-xl-4 col-md-6 col-12 pt-3 d-flex">
+        <CategoryCard :category="category"></CategoryCard>
       </div>
     </div>
   </div>
 </template>
 <script>
-import CategoryCard from '../../components/Category/CategoryCard.vue'
-const axios = require('axios')
+import CategoryCard from '@/components/Category/CategoryCard'
+
 export default {
   name: 'Category',
+  props: ['categories'],
   components: { CategoryCard },
   data () {
     return {
-      baseURL: 'https://smarthomewebtech.herokuapp.com/',
-      categories: []
+      baseURL: 'https://smarthomewebtech.herokuapp.com'
     }
   },
   methods: {
-    async getCategories () {
-      await axios
-        .get(`${this.baseURL}/api/categories/`)
-        .then((res) => (this.categories = res.data))
-        .catch((err) => console.log(err))
-    }
   },
   mounted () {
-    this.getCategories()
   }
 }
 </script>

@@ -2,44 +2,45 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h4 class="pt-3">Create new Product</h4>
+        <h4>Add New Product</h4>
       </div>
     </div>
-
     <div class="row">
       <div class="col-3"></div>
-      <div class="col-md-6 px-5 px-md-0">
+      <div class="col-6">
         <form>
           <div class="form-group">
             <label>Category</label>
             <select class="form-control" v-model="categoryId" required>
-              <option v-for="category in categories" :key="category.id" :value="category.id">{{category.categoryName}}</option>
+              <option v-for="category in categories" :key="category.id"
+                      :value="category.id">{{ category.categoryName }}</option>
             </select>
           </div>
           <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control" v-model="name" required>
+            <input type="text" v-model="name" class="form-control" >
           </div>
           <div class="form-group">
             <label>Description</label>
-            <input type="text" class="form-control" v-model="description" required>
+            <input type="text" v-model="description" class="form-control" >
           </div>
           <div class="form-group">
-            <label>ImageURL</label>
-            <input type="url" class="form-control" v-model="imageURL" required>
+            <label>Image Url</label>
+            <input type="text"  v-model="imageUrl" class="form-control" >
           </div>
           <div class="form-group">
             <label>Price</label>
-            <input type="number" class="form-control" v-model="price" required>
+            <input type="number" v-model="price" class="form-control" >
           </div>
-          <button type="button" class="btn btn-primary" @click="addProduct">Submit</button>
+          <button type="button" class="btn btn-primary" @click="addProduct">Add Product</button>
         </form>
       </div>
       <div class="col-3"></div>
     </div>
+
+    <!--        Form-->
   </div>
 </template>
-
 <script>
 import axios from 'axios'
 import swal from 'sweetalert'
@@ -51,7 +52,7 @@ export default {
       categoryId: null,
       name: null,
       description: null,
-      imageURL: null,
+      imageUrl: null,
       price: null
     }
   },
@@ -61,10 +62,10 @@ export default {
         categoryId: this.categoryId,
         description: this.description,
         name: this.name,
-        imageURL: this.imageURL,
+        imageUrl: this.imageURL,
         price: this.price
       }
-      axios.post(this.baseURL + 'api/products/', newProduct)
+      axios.post(this.baseURL + '/api/products', newProduct)
         .then(() => {
           this.$router.push({ name: 'AdminProduct' })
           swal({
