@@ -12,6 +12,7 @@ import ShowDetails from '@/views/Product/ShowDetails'
 import ListProducts from '@/views/Category/ListProducts'
 import SignUp from '@/views/SignUp'
 import SignIn from '@/views/SignIn'
+import Cart from '@/views/Cart'
 
 const routes = [
   {
@@ -78,6 +79,11 @@ const routes = [
     path: '/signin',
     name: 'Signin',
     component: SignIn
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
   }
 ]
 

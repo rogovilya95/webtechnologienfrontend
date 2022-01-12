@@ -34,12 +34,14 @@ export default {
           this.categories = res.data
         })
         .catch((err) => console.log('err', err))
+
       // api call to get the products
       await axios
         .get(this.baseURL + '/api/products')
         .then((res) => {
           this.products = res.data
         }).catch((err) => console.log('err', err))
+
       if (this.token) {
         axios
           .get(`${this.baseURL}/cart/?token=${this.token}`)

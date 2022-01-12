@@ -76,8 +76,10 @@
   </nav>
 </template>
 <script>
+import swal from 'sweetalert'
 export default {
   name: 'Navbar',
+  props: ['cartCount'],
   data () {
     return {
       token: null
@@ -87,6 +89,12 @@ export default {
     signout () {
       localStorage.removeItem('token')
       this.token = null
+      swal({
+        text: 'You logged out. See you soon again!',
+        icon: 'success'
+      })
+      this.$emit('resetCartCount')
+      this.$router.push({ name: 'Home' })
     }
   },
   mounted () {

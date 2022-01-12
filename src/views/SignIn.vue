@@ -39,7 +39,7 @@ export default {
         password: this.password
       }
       await axios
-        .post(`${this.baseURL}user/signIn`, body)
+        .post(`${this.baseURL}/user/signIn`, body)
         .then(() => {
           this.$router.replace('/')
           swal({
