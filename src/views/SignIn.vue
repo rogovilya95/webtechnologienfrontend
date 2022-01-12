@@ -32,23 +32,20 @@ export default {
     }
   },
   methods: {
-    async signin (
-      e) {
+    async signin (e) {
       e.preventDefault()
       const body = {
         email: this.email,
         password: this.password
       }
       await axios
-        .post(`${this.baseURL}/user/signin`, body)
-        .then((res) => {
-          localStorage.setItem('token', res.data.token)
+        .post(`${this.baseURL}user/signIn`, body)
+        .then(() => {
+          this.$router.replace('/')
           swal({
             text: 'Login successful',
             icon: 'success'
           })
-          this.$emit('fetchData')
-          this.$router.push({ name: 'Home' })
         })
         .catch((err) => console.log('err', err))
     }
